@@ -1,0 +1,74 @@
+@import "mixins";
+
+:host {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+.error-body {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  color: var(--text-color-primary);
+
+  .snake-box {
+    height: 300px;
+    width: 300px;
+
+    @include respond-below(md) {
+      height: 200px;
+      width: 200px;
+    }
+
+    .bw-snake,
+    .color-snake {
+      height: 300px;
+      width: 300px;
+      position: absolute;
+      opacity: 1;
+      transition: opacity 800ms ease-in-out;
+      fill: var(--text-color-primary);
+
+      @include respond-below(md) {
+        height: 200px;
+        width: 200px;
+      }
+    }
+
+    .color-snake {
+      opacity: 0;
+
+      &.show {
+        opacity: 1;
+        animation: fade 1s linear;
+      }
+
+      @keyframes fade {
+
+        0%,
+        100% {
+          opacity: 0
+        }
+
+        50% {
+          opacity: 1
+        }
+      }
+    }
+
+  }
+
+  .error-message {
+    flex: 1 1 100%;
+    font-size: 32px;
+    margin: 16px;
+    text-align: center;
+
+    @include respond-below(md) {
+      font-size: 24px;
+    }
+  }
+}

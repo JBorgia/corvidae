@@ -1,0 +1,60 @@
+@import "mixins";
+
+:host {
+  display: flex;
+  width: 432px;
+  justify-content: center;
+  flex-direction: column;
+
+  .game-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .game-board {
+
+    .snake-row {
+      height: 24px;
+
+      .cell {
+        border: 1px solid rgba(0, 0, 0, .25);
+        width: 24px;
+        height: 24px;
+        display: inline-block;
+      }
+    }
+  }
+
+  .new-game-menu {
+    justify-content: space-between;
+    display: flex;
+    margin: 8px -4px 0 -4px;
+
+    button {
+      flex: 1 1 auto;
+      margin: 0 4px;
+      justify-content: center;
+    }
+  }
+
+  .new-game-menu-label {
+    font-size: 1.17em;
+    margin-bottom: 13px;
+    display: block;
+    color: #fff;
+  }
+
+  .new-best-score {
+    animation: glow .5s infinite alternate;
+  }
+
+  @keyframes glow {
+    to {
+      text-shadow: 0 0 15px #ffff00;
+    }
+  }
+
+  >.start-button {
+    margin-top: 16px;
+  }
+}

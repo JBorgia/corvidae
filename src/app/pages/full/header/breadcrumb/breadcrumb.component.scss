@@ -1,0 +1,70 @@
+@import 'mixins';
+
+:host {
+  flex: 1;
+}
+
+.mini-breadcrumb-container {
+  height: 36px;
+  overflow: hidden;
+  transition: height 0.3s ease-out;
+
+  &.hide-mini-breadcrumb {
+    height: 0;
+  }
+
+  .container-fluid {
+    border-bottom: 1px solid var(--border-color-primary);
+  }
+}
+
+.breadcrumb {
+  background-color: var(--card-background-primary);
+
+  .breadcrumb-item+.breadcrumb-item::before {
+    content: "\f105";
+    color: var(--text-color-muted);
+  }
+
+  .breadcrumb-item.active {
+    color: var(--text-color-primary);
+  }
+}
+
+.breadcrumb {
+  padding: 0px;
+  margin-bottom: 0px;
+  background: transparent;
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding: 16px;
+  display: flex;
+
+  @include respond-below(sm) {
+    display: none;
+  }
+
+  li {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+
+    >a {
+      margin: 0;
+    }
+
+  }
+
+  .breadcrumb-item+.breadcrumb-item::before {
+    content: '\e914' !important;
+    font-family: 'x-meter-icons';
+    font-size: 16px;
+    position: inherit;
+    top: 2px;
+  }
+
+  .breadcrumb-item.active {
+    top: -2px;
+  }
+}

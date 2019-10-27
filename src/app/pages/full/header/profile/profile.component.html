@@ -1,0 +1,92 @@
+    <div class="profile-toggle-group">
+      <xm-dropdown
+        autoClose="outside"
+        placement="bottom-right"
+        (openChange)="xmDropdownChange()"
+        #profileMiniToggle>
+        <a
+          xmDropdownToggle
+          class="nav-link dropdown-toggle dropdown-avatar-icon"
+          href="javascript:void(0)"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false">
+          <i
+            class="icon-account"
+            ng-reflect-ng-class="icon-account"></i>
+        </a>
+        <xm-dropdown-menu>
+          <div
+            xmDropdownItem
+            class="dropdown-user">
+            <div class="dropdown-user-detail">
+              <div
+                class="dropdown-user-photo"
+                *ngIf="this.user?.photo !== null; else noSelectedPhoto"
+                [style]="getProfileImageStyle(user?.photo)"></div>
+              <ng-template #noSelectedPhoto>
+                <div class="dropdown-user-icon">
+                  <i class="icon-account"></i>
+                </div>
+              </ng-template>
+              <div class="dropdown-user-meta">
+                <p>
+                  {{user?.employee?.firstName}} {{user?.employee?.lastName}}
+                </p>
+                <p>{{user?.employee?.email}}</p>
+                <a
+                  (click)="profileRoute()"
+                  class="button-mini-profile"
+                  i18n="Button|Button link to profile@@xm.miniProfile.button1">
+                  View Profile
+                </a>
+              </div>
+            </div>
+            <div class="dropdown-user-shortcuts">
+
+              <div>
+
+                <select
+                  [(ngModel)]="userPrefs$.theme"
+                  (ngModelChange)="saveUserThemeDropdown($event)"
+                  class="custom-select custom-select-sm">
+                  <option
+                    *ngFor="let theme of userThemes | keyvalue"
+                    [ngValue]="theme.value"
+                    i18n="Select Theme|Select display of active theme@@xm.miniProfile.themeSelect.theme">{theme.key, select, Light Theme {Light Theme} Dark Theme {Dark Theme}}</option>
+                </select>
+
+              </div>
+            </div>
+            <div class="dropdown-notifications">
+              <span
+                class="dropdown-notifications-title"
+                i18n="Section Label|Label for notifications@@xm.miniProfile.notificationsLabel">
+                Notifications
+              </span>
+              <ul>
+                <li
+                  *ngFor="let notification of notificationHash | keyvalue"
+                  class="dropdown-notification">
+
+                  <div>
+                    <span
+                      *ngIf="notification.value.active"
+                      class="notification-active"
+                      i18n="Badge|New badge for notification status@@xm.miniProfile.notificationStatus">
+                      NEW
+                    </span>
+                    <a
+                      class="pointer"
+                      (click)="releaseNotesRoute()">
+                      {{ notification.value.message }}
+                    </a>
+                  </div>
+
+                </li>
+              </ul>
+            </div>
+          </div>
+        </xm-dropdown-menu>
+      </xm-dropdown>
+    </div>

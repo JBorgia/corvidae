@@ -1,0 +1,53 @@
+@import 'mixins';
+
+:host {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  .navbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    min-height: 48px;
+
+    z-index: 12;
+    width: 100%;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    background-color: var(--card-background-primary);
+    border-bottom: 1px solid var(--border-color-primary);
+
+    &.mini-sidebar {
+      .navbar-logo {
+        width: 70px;
+      }
+    }
+
+    @include respond-below(sm) {
+      padding-right: 16px;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      -webkit-align-items: center;
+    }
+
+    .navbar-collapse {
+      display: flex;
+      flex-basis: 100%;
+      flex-grow: 1;
+      align-items: center;
+
+      @include respond-above(sm) {
+        flex-basis: auto;
+      }
+
+      @include respond-below(sm) {
+        width: 100%;
+        padding-right: 0;
+      }
+    }
+  }
+}

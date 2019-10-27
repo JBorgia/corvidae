@@ -1,0 +1,31 @@
+<div class="game-header">
+  <h3
+    class="score"
+    [ngClass]="{'new-best-score': newBestScore}">
+    Score: {{score}}
+  </h3>
+  <h3
+    class="best-score"
+    [ngClass]="{'new-best-score': newBestScore}">
+    Best Score: {{best_score}}
+  </h3>
+</div>
+<div class="game-board">
+  <div
+    class="snake-row"
+    *ngFor="let column of board; let i = index;">
+    <div
+      class="cell"
+      [ngStyle]="{'background-color': setColors(i, j)}"
+      *ngFor="let row of column; let j = index"></div>
+  </div>
+</div>
+<div class="new-game-menu">
+  <button
+    xm
+    class="xm-lg xm-primary"
+    (click)="newGame(mode)"
+    *ngFor="let mode of getKeys(all_modes)">
+    {{all_modes[mode]}}
+  </button>
+</div>

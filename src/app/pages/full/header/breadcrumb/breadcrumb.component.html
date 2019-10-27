@@ -1,0 +1,28 @@
+<div class="mini-breadcrumb-container">
+  <ol class="breadcrumb">
+    <ng-template
+      ngFor
+      let-breadcrumb
+      [ngForOf]="pageInfo?.breadcrumbs"
+      let-last="last">
+      <li
+        class="breadcrumb-item"
+        *ngIf="!last">
+        <a
+          *ngIf="breadcrumb.breadcrumbRoute.url; else noLink"
+          [routerLink]="breadcrumb.breadcrumbRoute.url"
+          [queryParams]="breadcrumb.breadcrumbRoute.queryParams">
+          {{breadcrumb.breadcrumb}}
+        </a>
+        <ng-template #noLink>
+          <span>{{breadcrumb.breadcrumb}}</span>
+        </ng-template>
+      </li>
+      <li
+        class="breadcrumb-item active"
+        *ngIf="last">
+        {{breadcrumb.breadcrumb}}
+      </li>
+    </ng-template>
+  </ol>
+</div>

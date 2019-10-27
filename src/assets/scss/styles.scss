@@ -1,0 +1,16 @@
+@import 'mixins';
+
+/* used for all themes */
+[data-theme] {
+    // place styles here
+}
+
+/* light-theme exclusive */
+[data-theme="light-theme"] {
+    // place styles here
+}
+
+/* dark-theme exclusive */
+[data-theme="dark-theme"] {
+    // place styles here
+}

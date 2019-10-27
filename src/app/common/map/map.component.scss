@@ -1,0 +1,40 @@
+.argisMapContainer {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  #mapDiv {
+    width: 100%;
+    height: 100%;
+  }
+
+  #toggles-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 50;
+    display: flex;
+
+    :first-child {
+      pointer-events: unset !important;
+    }
+
+    .tile {
+      height: 32px;
+      width: 32px;
+      margin: 2px;
+      border: 1px solid black;
+      border-radius: 2px;
+      padding: 0px;
+      background-color: black;
+
+      &:hover {
+        img {
+          opacity: 0.8;
+        }
+      }
+    }
+
+  }
+}
